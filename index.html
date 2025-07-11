@@ -1,149 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JOY PATEL Documents</title>
-    <link rel="icon" type="png" href="logo.png">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JOY PATEL - Documents Portfolio</title>
+    <link rel="icon" type="png" href="https://i.pinimg.com/1200x/ba/e6/2a/bae62a2fcc00cb31c2ed9071a9ae7b7b.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            color: #ffd700;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem 6rem 1rem;
+        }
+
+        .search-container {
+            margin: 2rem auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 2px 12px rgba(255, 215, 0, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            color: #ffd700;
+            padding: 1.2rem;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #ffd700;
+        }
+
         .pdf-list {
             list-style-type: none;
-            padding: 0;
-            margin: 0;
+            padding: 1.5rem;
         }
 
         .pdf-list li {
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: black;
-            border-radius: 5px;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .pdf-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .pdf-list a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
             text-decoration: none;
-            color: gold; 
-            display: block; 
-       
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .pdf-list a:hover {
-            text-decoration: underline;
+            color: #000;
+            background-color: #fff9e6;
+        }
+
+        .pdf-list i {
+            margin-right: 15px;
+            color: #ffd700;
+            font-size: 1.2rem;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .date-badge {
+            background-color: #ffd700;
+            color: #000;
+            padding: 0.3rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 15px;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            color: #ffd700;
+            text-align: center;
+            padding: 1.5rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
+        /* Fix for iOS Safari 100vh issue */
+        @supports (-webkit-touch-callout: none) {
+
+            body,
+            html {
+                height: -webkit-fill-available;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        section:nth-child(7) {
+            animation-delay: 0.7s;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>DOCUMENTS</h1>
+        <h1>Joy Patel</h1>
+        <p>Professional Documents Portfolio</p>
     </header>
 
     <main>
         <section id="documents">
             <h2 class="section-title">My Certificates & Achievements</h2>
             <ul class="pdf-list">
-                <li><a href="pdfs/Eithical hacking .pdf" target="_blank">25 sep 2021 - Eithical hacking</a></li>
-                <li><a href="pdfs/NIPAM CERITFICATE.pdf" target="_blank">28 sep 2022 - NIPAM CERITFICATE</a></li>
-                <li><a href="pdfs/15 july 2022 Programming for Everybody (Getting Started with Python).pdf" target="_blank">15 july 2022 Programming for Everybody (Getting Started with Python)</a></li>
-                <li><a href="pdfs/16 july 2022 Initiating and Planning Projects.pdf" target="_blank">16 july 2022 - Initiating and Planning Projects</a></li>
-                <li><a href="pdfs/28 july 2022 Peer-to-Peer Protocols and Local Area Networks.pdf" target="_blank">28 july 2022 - Peer-to-Peer Protocols and Local Area Networks</a></li>
-                <li><a href="pdfs/4 feb 2023 Introduction to Web Development.pdf" target="_blank">4 feb 2023 - Introduction to Web Development</a></li>
-                <li><a href="pdfs/3 march 2023 Smart Cities – Management of Smart Urban Infrastructures.pdf" target="_blank">3 march 2023 - Smart Cities – Management of Smart Urban Infrastructures</a></li>
-                <li><a href="pdfs/10 march 2023 Machine Learning with Python.pdf" target="_blank">10 march 2023 - Machine Learning with Python</a></li>
-                <li><a href="pdfs/11 march 2023 Introduction to DevOps.pdf" target="_blank">11 march 2023 - Introduction to DevOps</a></li>
-                <li><a href="pdfs/22 sep 2023 Cryptography.pdf" target="_blank">22 sep 2023 - Cryptography</a></li>
-                <li><a href="pdfs/22 sep 2023 Introduction to the Internet of Things and Embedded Systems.pdf" target="_blank">22 sep 2023 - Introduction to the Internet of Things and Embedded Systems</a></li>
-                <li><a href="pdfs/May 25-05-2025 Software Engineering Job Simulation.pdf" target="_blank">25 may 2025 - EA Software Engineering Job Simulation Certificate</a></li>
-                <li><a href="pdfs/May 25-5-2025  Solutions Architecture Job Simulation.pdf" target="_blank">25 may 2025 - AWS Solutions Architecture Job Simulation Certificate</a></li>
+                <li><a href="pdfs/Eithical hacking .pdf" target="_blank"><i class="fas fa-certificate"></i><span
+                            class="date-badge">25 Sep 2021</span>Ethical Hacking Certificate</a></li>
+                <li><a href="pdfs/NIPAM CERITFICATE.pdf" target="_blank"><i class="fas fa-award"></i><span
+                            class="date-badge">28 Sep 2022</span>NIPAM Certificate</a></li>
+                <li><a href="pdfs/15 july 2022 Programming for Everybody (Getting Started with Python).pdf"
+                        target="_blank"><i class="fab fa-python"></i><span class="date-badge">15 Jul
+                            2022</span>Programming for Everybody (Python)</a></li>
+                <li><a href="pdfs/16 july 2022 Initiating and Planning Projects.pdf" target="_blank"><i
+                            class="fas fa-project-diagram"></i><span class="date-badge">16 Jul 2022</span>Initiating and
+                        Planning Projects</a></li>
+                <li><a href="pdfs/28 july 2022 Peer-to-Peer Protocols and Local Area Networks.pdf" target="_blank"><i
+                            class="fas fa-network-wired"></i><span class="date-badge">28 Jul 2022</span>Peer-to-Peer
+                        Protocols and LAN</a></li>
+                <li><a href="pdfs/4 feb 2023 Introduction to Web Development.pdf" target="_blank"><i
+                            class="fas fa-code"></i><span class="date-badge">4 Feb 2023</span>Introduction to Web
+                        Development</a></li>
+                <li><a href="pdfs/3 march 2023 Smart Cities – Management of Smart Urban Infrastructures.pdf"
+                        target="_blank"><i class="fas fa-city"></i><span class="date-badge">3 Mar 2023</span>Smart
+                        Cities Management</a></li>
+                <li><a href="pdfs/10 march 2023 Machine Learning with Python.pdf" target="_blank"><i
+                            class="fas fa-robot"></i><span class="date-badge">10 Mar 2023</span>Machine Learning with
+                        Python</a></li>
+                <li><a href="pdfs/11 march 2023 Introduction to DevOps.pdf" target="_blank"><i
+                            class="fas fa-server"></i><span class="date-badge">11 Mar 2023</span>Introduction to
+                        DevOps</a></li>
+                <li><a href="pdfs/22 sep 2023 Cryptography.pdf" target="_blank"><i class="fas fa-lock"></i><span
+                            class="date-badge">22 Sep 2023</span>Cryptography</a></li>
+                <li><a href="pdfs/22 sep 2023 Introduction to the Internet of Things and Embedded Systems.pdf"
+                        target="_blank"><i class="fas fa-microchip"></i><span class="date-badge">22 Sep 2023</span>IoT
+                        and Embedded Systems</a></li>
+                <li><a href="pdfs/May 25-05-2025 Software Engineering Job Simulation.pdf" target="_blank"><i
+                            class="fas fa-laptop-code"></i><span class="date-badge">25 May 2025</span>EA Software
+                        Engineering Job Simulation</a></li>
+                <li><a href="pdfs/May 25-5-2025  Solutions Architecture Job Simulation.pdf" target="_blank"><i
+                            class="fas fa-cloud"></i><span class="date-badge">25 May 2025</span>AWS Solutions
+                        Architecture Job Simulation</a></li>
             </ul>
         </section>
 
         <section id="academic">
             <h2 class="section-title">Academic Documents</h2>
             <ul class="pdf-list">
-                <li><a href="pdfs/10TH MARKSHEET.pdf" target="_blank">10TH MARKSHEET</a></li>
-                <li><a href="pdfs/10 TRIAL CERTIFICATE.pdf" target="_blank">10 TRIAL CERTIFICATE</a></li>
-                <li><a href="pdfs/12TH MARKSHEET.pdf" target="_blank">12TH MARKSHEET</a></li>
-                <li><a href="pdfs/BACHELOR MARKSHEET.pdf" target="_blank">BACHELOR MARKSHEET</a></li>
-                <li><a href="pdfs/Degree.pdf" target="_blank">Degree</a></li>
+                <li><a href="pdfs/10TH MARKSHEET.pdf" target="_blank"><i class="fas fa-graduation-cap"></i><span
+                            class="date-badge">10th Grade</span>10th Marksheet</a></li>
+                <li><a href="pdfs/10 TRIAL CERTIFICATE.pdf" target="_blank"><i class="fas fa-certificate"></i><span
+                            class="date-badge">10th Grade</span>10th Trial Certificate</a></li>
+                <li><a href="pdfs/12TH MARKSHEET.pdf" target="_blank"><i class="fas fa-user-graduate"></i><span
+                            class="date-badge">12th Grade</span>12th Marksheet</a></li>
+                <li><a href="pdfs/BACHELOR MARKSHEET.pdf" target="_blank"><i class="fas fa-university"></i><span
+                            class="date-badge">Bachelor's</span>Bachelor Marksheet</a></li>
+                <li><a href="pdfs/Degree.pdf" target="_blank"><i class="fas fa-scroll"></i><span
+                            class="date-badge">Degree</span>Degree Certificate</a></li>
             </ul>
         </section>
 
         <section id="internship">
             <h2 class="section-title">Internship Documents</h2>
             <ul class="pdf-list">
-                <li><a href="pdfs/ULTRON INTERNSHIP.pdf" target="_blank">Ultron Technologies Internship</a></li>
-                <li><a href="pdfs/perfect software internship.pdf" target="_blank">Perfect Software Internship</a></li>
+                <li><a href="pdfs/ULTRON INTERNSHIP.pdf" target="_blank"><i class="fas fa-briefcase"></i><span
+                            class="date-badge">Internship</span>Ultron Technologies Internship</a></li>
+                <li><a href="pdfs/perfect software internship.pdf" target="_blank"><i class="fas fa-laptop"></i><span
+                            class="date-badge">Internship</span>Perfect Software Internship</a></li>
             </ul>
         </section>
 
         <section id="passport">
             <h2 class="section-title">Passport & Other Documents</h2>
             <ul class="pdf-list">
-                <li><a href="pdfs/Passport.pdf" target="_blank">Passport</a></li>
-                <li><a href="pdfs/AADHAR CARD.pdf" target="_blank">Aadhar Card</a></li>
-                <li><a href="pdfs/PAN CARD.pdf" target="_blank">PAN Card</a></li>
-                <li><a href="pdfs/DL Extract.pdf" target="_blank">DRIVING LICENCE EXTRACT</a></li>
+                <li><a href="pdfs/evisa.pdf" target="_blank"><i class="fas fa-passport"></i><span
+                            class="date-badge">ID</span>EVISA</a></li>
+                <li><a href="pdfs/Passport.pdf" target="_blank"><i class="fas fa-passport"></i><span
+                            class="date-badge">ID</span>Passport</a></li>
+                <li><a href="pdfs/AADHAR CARD.pdf" target="_blank"><i class="fas fa-id-card"></i><span
+                            class="date-badge">ID</span>Aadhar Card</a></li>
+                <li><a href="pdfs/PAN CARD.pdf" target="_blank"><i class="fas fa-credit-card"></i><span
+                            class="date-badge">ID</span>PAN Card</a></li>
+                <li><a href="pdfs/DL Extract.pdf" target="_blank"><i class="fas fa-car"></i><span
+                            class="date-badge">ID</span>Driving License Extract</a></li>
             </ul>
         </section>
-
 
         <section id="resume">
             <h2 class="section-title">CV & Resume</h2>
             <ul class="pdf-list">
-                <li><a href="pdfs/JOY PATEL (RESUME).pdf" target="_blank">Resume</a></li>
-                <li><a href="pdfs/JOY PATEL (CV).pdf" target="_blank">CV</a></li>
+                <li><a href="pdfs/JOY PATEL (RESUME).pdf" target="_blank"><i class="fas fa-file-alt"></i><span
+                            class="date-badge">Resume</span>Professional Resume</a></li>
+                <li><a href="pdfs/JOY PATEL (CV).pdf" target="_blank"><i class="fas fa-file-contract"></i><span
+                            class="date-badge">CV</span>Curriculum Vitae</a></li>
             </ul>
         </section>
-
-
 
         <section id="college">
             <h2 class="section-title">College Documents</h2>
             <ul class="pdf-list">
-                <li><a href="pdfs/LOR KEYUR SIR.pdf" target="_blank">Letter of Recommendation - Professor 1</a></li>
-                <li><a href="pdfs/LOR ANKITA MAM.pdf" target="_blank">Letter of Recommendation - Professor 2</a></li>
-                <li><a href="pdfs/LOR SUNIT SIR.pdf" target="_blank">Letter of Recommendation - Professor 3</a></li>
-                <li><a href="pdfs/TRANSCRIPT.pdf" target="_blank">Official Transcript</a></li>
-                <li><a href="pdfs/MOI.pdf" target="_blank">MOI</a></li>
-                <li><a href="pdfs/IELTS RESULT.pdf" target="_blank">IELTS</a></li>
-                <li><a href="pdfs/E medical.pdf" target="_blank">E Medical</a></li>
-                <li><a href="pdfs/TB Test.pdf" target="_blank">TB TEST</a></li>
-                <li><a href="pdfs/COVID VACCINE.pdf" target="_blank">COVID VACCINE</a></li>
+                <li><a href="pdfs/LOR KEYUR SIR.pdf" target="_blank"><i class="fas fa-envelope-open-text"></i><span
+                            class="date-badge">LOR</span>Letter of Recommendation - Professor 1</a></li>
+                <li><a href="pdfs/LOR ANKITA MAM.pdf" target="_blank"><i class="fas fa-envelope-open-text"></i><span
+                            class="date-badge">LOR</span>Letter of Recommendation - Professor 2</a></li>
+                <li><a href="pdfs/LOR SUNIT SIR.pdf" target="_blank"><i class="fas fa-envelope-open-text"></i><span
+                            class="date-badge">LOR</span>Letter of Recommendation - Professor 3</a></li>
+                <li><a href="pdfs/TRANSCRIPT.pdf" target="_blank"><i class="fas fa-file-invoice"></i><span
+                            class="date-badge">Academic</span>Official Transcript</a></li>
+                <li><a href="pdfs/MOI.pdf" target="_blank"><i class="fas fa-language"></i><span
+                            class="date-badge">Document</span>MOI</a></li>
+                <li><a href="pdfs/IELTS RESULT.pdf" target="_blank"><i class="fas fa-language"></i><span
+                            class="date-badge">Test</span>IELTS Result</a></li>
+            </ul>
+        </section>
+
+        <section id="medical">
+            <h2 class="section-title">Medical Documents</h2>
+            <ul class="pdf-list">
+                <li><a href="pdfs/E medical.pdf" target="_blank"><i class="fas fa-file-medical"></i><span
+                            class="date-badge">Medical</span>E Medical Report</a></li>
+                <li><a href="pdfs/TB Test.pdf" target="_blank"><i class="fas fa-vial"></i><span
+                            class="date-badge">Test</span>TB Test Results</a></li>
+                <li><a href="pdfs/COVID VACCINE.pdf" target="_blank"><i class="fas fa-syringe"></i><span
+                            class="date-badge">Vaccine</span>COVID-19 Vaccination Certificate</a></li>
             </ul>
         </section>
 
         <section id="offers">
             <h2 class="section-title">University Offer Letters</h2>
             <ul class="pdf-list">
-                <li><a href="pdfs/ROWAN OFFER LETTER (USA).pdf" target="_blank">Rowan University of New Jersey (USA) - Offer Letter</a></li>
-                <li><a href="pdfs/NSU OFFER LETTER (USA).pdf" target="_blank">Nova Southeastern University of Florida - Offer Letter</a></li>
-                <li><a href="pdfs/Letter of Acceptance.pdf" target="_blank">University of Niagara Falls Canada - Offer Letter</a></li>
-                <li><a href="pdfs/Conditional Offer Letter huddersfield.pdf" target="_blank">University of Huddersfield UK - Offer Letter</a></li>
-
+                <li><a href="pdfs/ROWAN OFFER LETTER (USA).pdf" target="_blank"><i class="fas fa-university"></i><span
+                            class="date-badge">USA</span>Rowan University of New Jersey</a></li>
+                <li><a href="pdfs/NSU OFFER LETTER (USA).pdf" target="_blank"><i class="fas fa-university"></i><span
+                            class="date-badge">USA</span>Nova Southeastern University</a></li>
+                <li><a href="pdfs/Letter of Acceptance.pdf" target="_blank"><i class="fas fa-university"></i><span
+                            class="date-badge">Canada</span>University of Niagara Falls</a></li>
+                <li><a href="pdfs/Conditional Offer Letter huddersfield.pdf" target="_blank"><i
+                            class="fas fa-university"></i><span class="date-badge">UK</span>University of
+                        Huddersfield</a></li>
+                <li><a href="pdfs/CAS LETTER.pdf" target="_blank"><i class="fas fa-university"></i><span
+                            class="date-badge">UK</span>University of Huddersfield - CAS Letter</a></li>
             </ul>
         </section>
     </main>
 
-    <footer style="color: gold; background-color: black;">
-        <p>&copy; <script>document.write(new Date().getFullYear())</script> | Designed & Developed by Joy Patel</p>
+    <footer>
+        <p>&copy;
+            <script>document.write(new Date().getFullYear())</script> | Designed & Developed by Joy Patel
+        </p>
     </footer>
 
     <script>
         const searchInput = document.getElementById('searchInput');
+        const pdfListItems = document.querySelectorAll('.pdf-list li');
 
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             const searchTerm = this.value.toLowerCase();
-            const pdfListItems = document.querySelectorAll('.pdf-list li');
 
             pdfListItems.forEach(item => {
-                const linkText = item.querySelector('a').textContent.toLowerCase();
+                const linkText = item.textContent.toLowerCase();
                 if (linkText.includes(searchTerm)) {
                     item.style.display = 'block';
                 } else {
                     item.style.display = 'none';
                 }
             });
+
+            // Check if any results are visible
+            const visibleItems = document.querySelectorAll('.pdf-list li[style="display: block"]');
+            const sections = document.querySelectorAll('section');
+
+            // Hide sections with no visible items
+            sections.forEach(section => {
+                const sectionItems = section.querySelectorAll('.pdf-list li[style="display: block"]');
+                if (sectionItems.length === 0) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                }
+            });
+        });
+
+        // Clear search when tapping the X on mobile
+        searchInput.addEventListener('search', function () {
+            if (this.value === '') {
+                // Reset visibility of all items and sections
+                pdfListItems.forEach(item => item.style.display = 'block');
+                document.querySelectorAll('section').forEach(section => section.style.display = 'block');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
+
 </html>
